@@ -1,0 +1,43 @@
+.formContainer {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #e64a19;
+}
