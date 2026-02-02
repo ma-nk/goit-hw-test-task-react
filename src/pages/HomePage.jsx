@@ -5,13 +5,15 @@ import css from "./HomePage.module.css";
 const HomePage = () => {
   return (
     <div className={css.hero}>
-      <h1 className={css.title}>Welcome to TravelTrucks</h1>
-      <p className={css.subtitle}>
-        Your adventure starts here. Rent the best campers for your next trip.
-      </p>
-      <Link to="/catalog" className={css.ctaButton}>
-        View Now
-      </Link>
+      <div className={css.container}>
+        <h1 className={css.title}>Campers of your dreams</h1>
+        <p className={css.subtitle}>
+          You can find everything you want in our catalog
+        </p>
+        <Link to="/catalog" className={css.ctaButton}>
+          View Now
+        </Link>
+      </div>
     </div>
   );
 };

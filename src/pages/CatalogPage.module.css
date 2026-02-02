@@ -1,20 +1,32 @@
-
 .container {
-  padding: 20px;
+  display: flex;
+  gap: 64px;
+  padding: 48px 64px 0;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-.loadMoreButton {
+.listContainer {
+  flex: 1;
+}
+
+.loadMoreBtn {
   display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #ff5722;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  margin: 50px auto;
+  padding: 16px 32px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #101828;
+  background-color: transparent;
+  border: 1px solid #475467;
+  border-radius: 200px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: border-color 0.3s;
 }
 
-.loadMoreButton:hover {
-  background-color: #e64a19;
+.loadMoreBtn:hover {
+  border-color: #E44848;
 }

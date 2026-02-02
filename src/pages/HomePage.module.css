@@ -1,36 +1,49 @@
 .hero {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 88px);
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../assets/hero.png") no-repeat center center/cover;
   color: white;
-  text-align: left;
-  padding-left: 100px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 64px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .title {
   font-size: 48px;
-  margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.16;
+  margin: 0 0 16px;
 }
 
 .subtitle {
   font-size: 24px;
-  margin-bottom: 40px;
+  font-weight: 600;
+  line-height: 1.33;
+  margin: 0 0 40px;
 }
 
 .ctaButton {
-  padding: 15px 30px;
-  background-color: #ff5722;
+  display: inline-block;
+  padding: 16px 40px;
+  background-color: #E44848;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
-  font-size: 18px;
+  border-radius: 200px;
+  font-size: 16px;
+  font-weight: 500;
   transition: background-color 0.3s;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
 }
 
 .ctaButton:hover {
-  background-color: #e64a19;
+  background-color: #D84343;
 }
