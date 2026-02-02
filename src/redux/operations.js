@@ -13,7 +13,11 @@ const buildParams = (filters) => {
   }
   if (filters.equipment && filters.equipment.length > 0) {
     filters.equipment.forEach((item) => {
-      params[item] = true;
+      if (item === "automatic") {
+        params.transmission = "automatic";
+      } else {
+        params[item] = true;
+      }
     });
   }
   // Add pagination params
