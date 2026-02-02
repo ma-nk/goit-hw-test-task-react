@@ -18,25 +18,28 @@
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-color: #f0f0f0;
+  background-color: #F2F4F7;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
-  color: #ff5722;
+  color: #E44848;
 }
 
 .name {
   font-weight: 600;
   margin: 0;
+  font-size: 18px;
+  color: #101828;
 }
 
 .rating {
-  margin: 0;
+  display: flex;
+  gap: 4px;
 }
 
 .comment {

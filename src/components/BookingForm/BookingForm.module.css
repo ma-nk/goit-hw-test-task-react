@@ -1,43 +1,58 @@
 .formContainer {
-  padding: 20px;
-  border: 1px solid #ccc;
+  padding: 44px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 10px;
   flex: 1;
 }
 
 .formGroup {
-  margin-bottom: 15px;
+  margin-bottom: 24px;
 }
 
 .input,
 .textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 18px;
+  background-color: #F7F7F7;
+  border: none;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(16, 24, 40, 0.6);
 }
 
 .textarea {
-  height: 100px;
-  resize: vertical;
+  height: 114px;
+  resize: none;
 }
 
 .error {
-  color: red;
+  color: #E44848;
   font-size: 12px;
+  margin-top: 5px;
 }
 
 .submitButton {
-  width: 100%;
-  padding: 10px;
-  background-color: #ff5722;
+  width: 160px;
+  padding: 16px 60px;
+  background-color: #E44848;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 200px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
 .submitButton:hover {
-  background-color: #e64a19;
+  background-color: #D84343;
 }

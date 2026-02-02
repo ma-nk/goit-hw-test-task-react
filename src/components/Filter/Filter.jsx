@@ -1,5 +1,6 @@
 
 import { Formik, Form, Field } from "formik";
+import { BsWind, BsDiagram3, BsCupHot, BsTv, BsDroplet, BsGrid1X2, BsGrid, BsGrid3X3 } from "react-icons/bs";
 import css from "./Filter.module.css";
 
 const Filter = ({ onSearch }) => {
@@ -12,12 +13,15 @@ const Filter = ({ onSearch }) => {
           form: "",
         }}
         onSubmit={(values) => {
-          onSearch(values);
+          onSearch({
+            ...values,
+            location: values.location.trim(),
+          });
         }}
       >
         <Form>
           <div className={css.formGroup}>
-            <label htmlFor="location">Location</label>
+            <label htmlFor="location" className={css.label}>Location</label>
             <Field
               id="location"
               name="location"
@@ -27,50 +31,71 @@ const Filter = ({ onSearch }) => {
           </div>
 
           <div className={css.formGroup}>
-            <p>Filters</p>
+            <p className={css.groupTitle}>Filters</p>
+            <h3 className={css.subTitle}>Vehicle equipment</h3>
             <div className={css.checkboxGroup}>
-              <Field type="checkbox" name="equipment" value="AC" id="ac" />
-              <label htmlFor="ac">AC</label>
-              <Field
-                type="checkbox"
-                name="equipment"
-                value="automatic"
-                id="automatic"
-              />
-              <label htmlFor="automatic">Automatic</label>
-              <Field
-                type="checkbox"
-                name="equipment"
-                value="kitchen"
-                id="kitchen"
-              />
-              <label htmlFor="kitchen">Kitchen</label>
-              <Field type="checkbox" name="equipment" value="TV" id="tv" />
-              <label htmlFor="tv">TV</label>
-              <Field
-                type="checkbox"
-                name="equipment"
-                value="bathroom"
-                id="shower"
-              />
-              <label htmlFor="shower">Shower/WC</label>
+              <label className={css.filterOption}>
+                <Field type="checkbox" name="equipment" value="AC" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsWind size={32} />
+                  <span>AC</span>
+                </div>
+              </label>
+              <label className={css.filterOption}>
+                <Field type="checkbox" name="equipment" value="automatic" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsDiagram3 size={32} />
+                  <span>Automatic</span>
+                </div>
+              </label>
+              <label className={css.filterOption}>
+                <Field type="checkbox" name="equipment" value="kitchen" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsCupHot size={32} />
+                  <span>Kitchen</span>
+                </div>
+              </label>
+              <label className={css.filterOption}>
+                <Field type="checkbox" name="equipment" value="TV" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsTv size={32} />
+                  <span>TV</span>
+                </div>
+              </label>
+              <label className={css.filterOption}>
+                <Field type="checkbox" name="equipment" value="bathroom" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsDroplet size={32} />
+                  <span>Shower/WC</span>
+                </div>
+              </label>
             </div>
           </div>
 
           <div className={css.formGroup}>
-            <p>Vehicle type</p>
+            <h3 className={css.subTitle}>Vehicle type</h3>
             <div className={css.radioGroup}>
-              <Field type="radio" name="form" value="panelTruck" id="van" />
-              <label htmlFor="van">Van</label>
-              <Field
-                type="radio"
-                name="form"
-                value="fullyIntegrated"
-                id="fully-integrated"
-              />
-              <label htmlFor="fully-integrated">Fully Integrated</label>
-              <Field type="radio" name="form" value="alcove" id="alcove" />
-              <label htmlFor="alcove">Alcove</label>
+              <label className={css.filterOption}>
+                <Field type="radio" name="form" value="panelTruck" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsGrid1X2 size={32} />
+                  <span>Van</span>
+                </div>
+              </label>
+              <label className={css.filterOption}>
+                <Field type="radio" name="form" value="fullyIntegrated" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsGrid size={32} />
+                  <span>Fully Integrated</span>
+                </div>
+              </label>
+              <label className={css.filterOption}>
+                <Field type="radio" name="form" value="alcove" className={css.hiddenInput} />
+                <div className={css.optionContent}>
+                  <BsGrid3X3 size={32} />
+                  <span>Alcove</span>
+                </div>
+              </label>
             </div>
           </div>
 

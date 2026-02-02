@@ -1,44 +1,112 @@
-
 .filterContainer {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  width: 360px;
 }
 
 .formGroup {
-  margin-bottom: 15px;
+  margin-bottom: 32px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(16, 24, 40, 0.6);
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 18px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: #F7F7F7;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #E44848;
+}
+
+.groupTitle {
+  margin-bottom: 14px;
+  color: #475467;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.subTitle {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #101828;
+  border-top: 1px solid rgba(16, 24, 40, 0.1);
+  padding-top: 24px;
 }
 
 .checkboxGroup,
 .radioGroup {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
 }
 
-.checkboxGroup label,
-.radioGroup label {
-  margin-right: 10px;
+.filterOption {
+  cursor: pointer;
+  flex-basis: calc(33.333% - 7px);
+}
+
+.hiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.optionContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 95px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 10px;
+  transition: border-color 0.3s;
+}
+
+.hiddenInput:checked + .optionContent {
+  border-color: #E44848;
+}
+
+.optionContent span {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .searchButton {
-  padding: 10px 20px;
-  background-color: #ff5722;
+  width: 160px;
+  padding: 16px 60px;
+  background-color: #E44848;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 200px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .searchButton:hover {
-  background-color: #e64a19;
+  background-color: #D84343;
 }
