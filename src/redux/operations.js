@@ -16,19 +16,43 @@ const buildParams = (filters) => {
       params[item] = true;
     });
   }
+  // Add pagination params
+  if (filters.page) {
+    params.page = filters.page;
+  }
+  if (filters.limit) {
+    params.limit = filters.limit;
+  }
   return params;
 };
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
-  async (filters, thunkAPI) => {
+  async (filters = {}, thunkAPI) => {
     try {
-      const apiParams = buildParams(filters || {});
+      const apiParams = buildParams(filters);
+      // Default limit if not provided
+      if (!apiParams.limit) apiParams.limit = 4;
+      
       const response = await axios.get("/campers", {
         params: apiParams,
       });
-      // Correctly return the array of items from the response
-      return response.data.items;
+      // Return the full data object or normalize if needed
+      // API returns { items: [...], total: ... } when paginated
+      // Or just array if not? Based on curl check: {"total":..., "items":[...]}
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchCamperById = createAsyncThunk(
+  "campers/fetchById",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`/campers/${id}`);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

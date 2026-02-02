@@ -1,73 +1,72 @@
 
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toggleFavorite } from "../../redux/favorites/favoritesSlice";
 import { selectFavorites } from "../../redux/selectors";
-import Modal from "../Modal/Modal";
-import CamperDetails from "../CamperDetails/CamperDetails";
 import css from "./CamperCard.module.css";
+import { FaStar, FaMapMarkerAlt, FaHeart } from "react-icons/fa";
+// Import other icons as needed for features
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-  const isFavorite = favorites.some((fav) => fav._id === camper._id);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isFavorite = favorites.some((fav) => fav.id === camper.id);
 
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite(camper));
   };
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
   const formatPrice = (price) => {
-    // Assuming price is a number, format it to two decimal places.
-    const numericPrice = Number(price);
-    return `€${!isNaN(numericPrice) ? numericPrice.toFixed(2) : '0.00'}`;
+      return `€${Number(price).toFixed(2).replace('.', ',')}`;
   };
 
   return (
     <div className={css.card}>
       <img
-        src={camper.gallery[0]?.original}
+        src={camper.gallery[0]?.original} // Use original as per previous code
         alt={camper.name}
         className={css.image}
       />
       <div className={css.details}>
         <div className={css.header}>
           <h3 className={css.name}>{camper.name}</h3>
-          <div className={css.price}>
-            <span>{formatPrice(camper.price)}</span>
+          <div className={css.priceWrapper}>
+            <span className={css.price}>{formatPrice(camper.price)}</span>
             <button
               onClick={handleToggleFavorite}
               className={`${css.favButton} ${isFavorite ? css.favorite : ""}`}
             >
-              ❤
+              <FaHeart color={isFavorite ? "#E44848" : "#101828"} />
             </button>
           </div>
         </div>
-        <div className={css.info}>
-          <span>⭐ {camper.rating}</span>
-          <span>📍 {camper.location}</span>
+        <div className={css.subHeader}>
+            <span className={css.rating}><FaStar color="#FFC531" /> {camper.rating} ({camper.reviews.length} Reviews)</span>
+            <span className={css.location}><FaMapMarkerAlt /> {camper.location}</span>
         </div>
-        <p className={css.description}>{camper.description}</p>
+        
+        <p className={css.description}>{camper.description.substring(0, 60)}...</p>
+        
         <div className={css.features}>
-          <span>{camper.adults} adults</span>
-          <span>{camper.transmission}</span>
-          <span>{camper.engine}</span>
-          {camper.kitchen && <span>Kitchen</span>}
-          {camper.bathroom && <span>Bathroom</span>}
-          {camper.AC && <span>AC</span>}
+            {/* Map features/amenities here with icons. 
+                Example:
+            */}
+            <span className={css.featureTag}>{camper.adults} adults</span>
+            <span className={css.featureTag}>{camper.transmission}</span>
+            <span className={css.featureTag}>{camper.engine}</span>
+            {camper.kitchen && <span className={css.featureTag}>Kitchen</span>}
+            {camper.AC && <span className={css.featureTag}>AC</span>}
         </div>
-        <button onClick={openModal} className={css.showMoreButton}>
+
+        <Link 
+            to={`/catalog/${camper.id}`} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className={css.showMoreButton}
+        >
           Show more
-        </button>
+        </Link>
       </div>
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <CamperDetails camper={camper} />
-        </Modal>
-      )}
     </div>
   );
 };
