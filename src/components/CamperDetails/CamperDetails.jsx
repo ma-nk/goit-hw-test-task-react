@@ -32,7 +32,7 @@ const CamperDetails = ({ camper }) => {
   ];
 
   const formatPrice = (price) => {
-    return `€${Number(price).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace('.', ',')}`;
+    return `€${Number(price).toFixed(0)}`;
   };
 
   return (

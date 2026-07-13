@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from "formik";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import mapIcon from "../../assets/map.svg";
 import css from "./Filter.module.css";
 
 const Filter = ({ onSearch, innerRef }) => {
@@ -25,11 +25,11 @@ const Filter = ({ onSearch, innerRef }) => {
             <div className={css.formGroup}>
               <label htmlFor="location" className={css.label}>Location</label>
               <div className={css.inputWrapper}>
-                <FaMapMarkerAlt className={css.inputIcon} />
+                <img src={mapIcon} alt="Location" className={css.inputIcon} />
                 <Field
                   id="location"
                   name="location"
-                  placeholder="Kyiv, Ukraine"
+                  placeholder="City"
                   className={css.input}
                   list="locations"
                 />

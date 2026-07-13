@@ -1,22 +1,29 @@
-
 import { Oval } from "react-loader-spinner";
 import css from "./Loader.module.css";
 
 const Loader = () => {
   return (
-    <div className={css.loader}>
-      <Oval
-        height={80}
-        width={80}
-        color="#ff5722"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-        ariaLabel="oval-loading"
-        secondaryColor="#e64a19"
-        strokeWidth={2}
-        strokeWidthSecondary={2}
-      />
+    <div className={css.backdrop}>
+      <div className={css.modal}>
+        <div className={css.spinnerWrapper}>
+          <Oval
+            height={60}
+            width={60}
+            color="var(--primary)"
+            secondaryColor="rgba(130, 155, 145, 0.2)"
+            strokeWidth={3}
+            strokeWidthSecondary={3}
+            visible={true}
+            ariaLabel="oval-loading"
+          />
+        </div>
+        <h3 className={css.title}>Loading tracks...</h3>
+        <p className={css.text}>
+          Please wait while we fetch the best
+          <br />
+          travel trucks for you
+        </p>
+      </div>
     </div>
   );
 };
