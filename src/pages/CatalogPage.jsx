@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../redux/operations";
 import { selectCampers } from "../redux/selectors";
-import { clearFilters } from "../redux/filters/filtersSlice";
 import CamperList from "../components/CamperList/CamperList";
 import Filter from "../components/Filter/Filter";
 import Loader from "../components/Loader/Loader";
@@ -20,7 +19,6 @@ const CatalogPage = () => {
   const filterRef = useRef(null);
 
   useEffect(() => {
-    dispatch(clearFilters());
     setPage(1);
     dispatch(fetchCampers({ page: 1, limit: 4 }));
   }, [dispatch]);
@@ -38,7 +36,6 @@ const CatalogPage = () => {
   };
 
   const handleClearFilters = () => {
-    dispatch(clearFilters());
     setPage(1);
     setFilters({});
     filterRef.current?.resetForm();
