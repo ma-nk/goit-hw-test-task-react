@@ -77,9 +77,6 @@
   color: var(--text-dark);
 }
 
-.rating {
-  text-decoration: underline;
-}
 
 .price {
   font-size: 24px;
@@ -93,12 +90,21 @@
   font-size: 16px;
   line-height: 1.5;
   color: var(--text-muted);
-  margin-bottom: 40px;
+  margin: 0;
 }
 
-.vehicleDetails {
-  border-top: 1px solid rgba(16, 24, 40, 0.1);
-  padding-top: 40px;
+.infoCard {
+  background-color: var(--bg-light);
+  padding: 40px;
+  border-radius: 24px;
+  margin-bottom: 24px;
+}
+
+.vehicleDetailsCard {
+  background-color: var(--bg-light);
+  padding: 40px;
+  border-radius: 24px;
+  margin-bottom: 24px;
 }
 
 .sectionTitle {
@@ -136,9 +142,7 @@
 .specRow {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 14px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid rgba(16, 24, 40, 0.05);
+  margin-bottom: 16px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
@@ -146,9 +150,7 @@
 }
 
 .specRow:last-child {
-  border-bottom: none;
   margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 .specLabel {
@@ -163,7 +165,6 @@
 .bottomSection {
   display: flex;
   gap: 40px;
-  border-top: 1px solid rgba(16, 24, 40, 0.1);
   padding-top: 48px;
 }
 
@@ -179,4 +180,10 @@
 .locationIcon {
   width: 16px;
   height: 16px;
+}
+
+.reviewsCard {
+  background-color: var(--bg-light);
+  padding: 40px;
+  border-radius: 24px;
 }

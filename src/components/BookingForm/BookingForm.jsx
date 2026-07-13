@@ -29,8 +29,7 @@ const BookingForm = () => {
           <Form autoComplete="off">
             <div className={css.formGroup}>
               <div className={`${css.inputWrapper} ${errors.name && touched.name ? css.hasError : ""}`}>
-                <label className={css.label}>Name*</label>
-                <Field name="name" className={css.input} />
+                <Field name="name" placeholder="Name*" className={css.input} />
                 {errors.name && touched.name && (
                   <FaExclamationCircle className={css.errorIcon} />
                 )}
@@ -42,8 +41,7 @@ const BookingForm = () => {
 
             <div className={css.formGroup}>
               <div className={`${css.inputWrapper} ${errors.email && touched.email ? css.hasError : ""}`}>
-                <label className={css.label}>Email*</label>
-                <Field name="email" type="email" className={css.input} />
+                <Field name="email" type="email" placeholder="Email*" className={css.input} />
                 {errors.email && touched.email && (
                   <FaExclamationCircle className={css.errorIcon} />
                 )}

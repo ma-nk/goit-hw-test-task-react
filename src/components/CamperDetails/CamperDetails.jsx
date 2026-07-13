@@ -59,19 +59,20 @@ const CamperDetails = ({ camper }) => {
 
         {/* Right column: Info & Specifications */}
         <div className={css.infoColumn}>
-          <h2 className={css.name}>{camper.name}</h2>
-          <div className={css.meta}>
-            <span className={css.rating}><FaStar color="#FFC531" /> {camper.rating} ({camper.reviews.length} Reviews)</span>
-            <span className={css.location}>
-              <img src={mapIcon} alt="Map" className={css.locationIcon} />
-              {camper.location}
-            </span>
+          <div className={css.infoCard}>
+            <h2 className={css.name}>{camper.name}</h2>
+            <div className={css.meta}>
+              <span className={css.rating}><FaStar color="#FFC531" /> {camper.rating} ({camper.reviews.length} Reviews)</span>
+              <span className={css.location}>
+                <img src={mapIcon} alt="Map" className={css.locationIcon} />
+                {camper.location}
+              </span>
+            </div>
+            <h3 className={css.price}>{formatPrice(camper.price)}</h3>
+            <p className={css.description}>{camper.description}</p>
           </div>
-          <h3 className={css.price}>{formatPrice(camper.price)}</h3>
           
-          <p className={css.description}>{camper.description}</p>
-          
-          <div className={css.vehicleDetails}>
+          <div className={css.vehicleDetailsCard}>
             <h3 className={css.sectionTitle}>Vehicle details</h3>
             <ul className={css.amenities}>
               {amenities.map(item => {

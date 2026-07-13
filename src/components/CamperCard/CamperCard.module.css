@@ -1,12 +1,11 @@
 .card {
   display: flex;
   flex-direction: row; /* Desktop usually row */
-  border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 20px;
   overflow: hidden;
   padding: 24px;
   gap: 24px;
-  background-color: #fff;
+  background-color: var(--bg-light);
 }
 
 .image {
@@ -91,7 +90,7 @@
 }
 
 .featureTag {
-  background-color: #F2F4F7;
+  background-color: var(--bg-badge);
   padding: 12px 18px;
   border-radius: 100px;
   font-size: 16px;
@@ -101,7 +100,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  mix-blend-mode: multiply;
 }
 
 .showMoreButton {

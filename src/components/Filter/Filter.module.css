@@ -1,5 +1,10 @@
 .filterContainer {
   width: 360px;
+  background-color: var(--bg-light);
+  padding: 40px;
+  border-radius: 24px;
+  height: fit-content;
+  box-sizing: border-box;
 }
 
 .formGroup {
@@ -34,7 +39,7 @@
   padding: 18px 18px 18px 48px;
   border: 1px solid transparent;
   border-radius: 10px;
-  background-color: var(--bg-light);
+  background-color: white;
   font-size: 16px;
   line-height: 1.25;
   color: var(--text-dark);
@@ -47,21 +52,19 @@
 }
 
 .groupTitle {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--text-muted);
-  margin: 0 0 14px 0;
-}
-
-.subTitle {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
   color: var(--text-dark);
+  margin: 0 0 24px 0;
+}
+
+.subTitle {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-muted);
   margin: 24px 0 0 0;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(16, 24, 40, 0.1);
 }
 
 .radioList {
@@ -85,7 +88,7 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  accent-color: var(--primary);
+  accent-color: #475467;
 }
 
 .buttonGroup {
