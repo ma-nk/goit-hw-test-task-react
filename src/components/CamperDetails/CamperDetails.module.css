@@ -1,146 +1,182 @@
 .container {
-  padding: 40px 64px;
+  padding: 48px 64px;
   max-width: 1440px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-.header {
-  margin-bottom: 24px;
+.topSection {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.galleryColumn {
+  flex: 1;
+  max-width: 631px;
+}
+
+.mainImageWrapper {
+  width: 100%;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background-color: #F2F4F7;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.activeThumbnail {
+  border-color: var(--primary);
+}
+
+.infoColumn {
+  flex: 1;
 }
 
 .name {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 10px;
-  color: #101828;
+  line-height: 1.33;
+  margin: 0 0 8px 0;
+  color: var(--text-dark);
 }
 
-.subHeader {
+.meta {
   display: flex;
   gap: 16px;
   margin-bottom: 16px;
 }
 
-.rating, .location {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 16px;
-    color: #101828;
+.rating,
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  color: var(--text-dark);
 }
+
 .rating {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .price {
   font-size: 24px;
   font-weight: 600;
-  color: #101828;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 images usually */
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.galleryImage {
-  width: 100%;
-  height: 310px;
-  object-fit: cover;
-  border-radius: 10px;
+  line-height: 1.33;
+  color: var(--text-dark);
+  margin: 0 0 24px 0;
 }
 
 .description {
-  margin-bottom: 40px;
-  line-height: 1.5;
-  color: #475467;
   font-size: 16px;
-}
-
-.tabs {
-  display: flex;
-  gap: 40px;
+  line-height: 1.5;
+  color: var(--text-muted);
   margin-bottom: 40px;
-  border-bottom: 1px solid rgba(16, 24, 40, 0.2);
 }
 
-.tabs button {
-  background: none;
-  border: none;
-  padding-bottom: 24px;
-  cursor: pointer;
+.vehicleDetails {
+  border-top: 1px solid rgba(16, 24, 40, 0.1);
+  padding-top: 40px;
+}
+
+.sectionTitle {
   font-size: 20px;
   font-weight: 600;
-  color: #101828;
-  position: relative;
-}
-
-.tabs .activeTab::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background-color: #E44848;
-  border-radius: 2px;
-}
-
-.content {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.detailsPanel {
-  flex: 1;
-}
-
-.bookingFormWrapper {
-    width: 448px;
-    flex-shrink: 0;
+  color: var(--text-dark);
+  margin: 0 0 24px 0;
 }
 
 .amenities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+  list-style: none;
+  padding: 0;
 }
 
 .amenity {
-    background-color: #F2F4F7;
-    padding: 12px 18px;
-    border-radius: 100px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #101828;
+  background-color: var(--bg-badge);
+  padding: 12px 18px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+  mix-blend-mode: multiply;
 }
 
-.detailsTitle {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 24px;
-    border-bottom: 1px solid rgba(16, 24, 40, 0.1);
-    padding-bottom: 24px;
+.specsTable {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.detailsList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.05);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-dark);
 }
 
-.detailItem {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 14px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #101828;
+.specRow:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
-.detailItem span:last-child {
-    color: #101828;
+
+.specLabel {
+  color: var(--text-muted);
+}
+
+.specValue {
+  color: var(--text-dark);
+  text-transform: capitalize;
+}
+
+.bottomSection {
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid rgba(16, 24, 40, 0.1);
+  padding-top: 48px;
+}
+
+.reviewsColumn {
+  flex: 1;
+}
+
+.bookingColumn {
+  width: 448px;
+  flex-shrink: 0;
+}
+
+.locationIcon {
+  width: 16px;
+  height: 16px;
 }

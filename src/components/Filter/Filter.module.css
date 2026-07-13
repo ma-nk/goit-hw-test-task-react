@@ -14,89 +14,90 @@
   font-weight: 500;
 }
 
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #101828;
+  pointer-events: none;
+}
+
 .input {
   width: 100%;
-  padding: 18px;
+  padding: 18px 18px 18px 48px;
   border: 1px solid transparent;
   border-radius: 10px;
-  background-color: #F7F7F7;
+  background-color: var(--bg-light);
   font-size: 16px;
   line-height: 1.25;
-  color: #101828;
-}
-
-.input:focus {
+  color: var(--text-dark);
   outline: none;
-  border-color: #E44848;
-}
-
-.groupTitle {
-  margin-bottom: 14px;
-  color: #475467;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.subTitle {
-  margin-bottom: 24px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #101828;
-  border-top: 1px solid rgba(16, 24, 40, 0.1);
-  padding-top: 24px;
-}
-
-.checkboxGroup,
-.radioGroup {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.filterOption {
-  cursor: pointer;
-  flex-basis: calc(33.333% - 7px);
-}
-
-.hiddenInput {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-.optionContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 95px;
-  border: 1px solid rgba(16, 24, 40, 0.2);
-  border-radius: 10px;
   transition: border-color 0.3s;
 }
 
-.hiddenInput:checked + .optionContent {
-  border-color: #E44848;
+.input:focus {
+  border-color: var(--primary);
 }
 
-.optionContent span {
+.groupTitle {
   font-size: 16px;
   font-weight: 500;
-  text-align: center;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0 0 14px 0;
+}
+
+.subTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin: 24px 0 0 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+}
+
+.radioList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.radioInput {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
 }
 
 .searchButton {
-  width: 160px;
-  padding: 16px 60px;
-  background-color: #E44848;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 200px;
@@ -105,8 +106,33 @@
   font-size: 16px;
   font-weight: 500;
   letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+.clearButton {
+  width: 100%;
+  padding: 16px;
+  background-color: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--border);
+  border-radius: 200px;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .searchButton:hover {
-  background-color: #D84343;
+  background-color: var(--primary-hover);
+}
+
+.clearButton:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }

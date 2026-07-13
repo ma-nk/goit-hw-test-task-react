@@ -22,7 +22,15 @@ const campersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCampers.pending, handlePending)
+      .addCase(fetchCampers.pending, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+        const isLoadMore = action.meta.arg && action.meta.arg.page && action.meta.arg.page > 1;
+        if (!isLoadMore) {
+          state.items = [];
+          state.total = 0;
+        }
+      })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         // payload is { items: [], total: ... }

@@ -48,5 +48,5 @@
 
 .navLink:hover,
 .active {
-  color: #E44848;
+  color: var(--primary);
 }

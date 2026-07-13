@@ -28,5 +28,5 @@
 }
 
 .loadMoreBtn:hover {
-  border-color: #E44848;
+  border-color: var(--primary);
 }

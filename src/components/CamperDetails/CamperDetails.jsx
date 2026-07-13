@@ -1,18 +1,16 @@
-
 import { useState } from "react";
 import BookingForm from "../BookingForm/BookingForm";
 import Reviews from "../Reviews/Reviews";
 import css from "./CamperDetails.module.css";
-import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
-// Add other icons for amenities as needed
+import { FaStar } from "react-icons/fa";
+import mapIcon from "../../assets/map.svg";
 
 const CamperDetails = ({ camper }) => {
-  const [activeTab, setActiveTab] = useState("features");
+  const [activeImage, setActiveImage] = useState(camper.gallery[0]?.original || "");
 
   const amenities = [
-    { key: "adults", label: "adults", icon: null }, // adults usually treated as amenity in UI
-    { key: "transmission", label: "", icon: null },
-    { key: "engine", label: "", icon: null },
+    { key: "transmission", label: camper.transmission, icon: null },
+    { key: "engine", label: camper.engine, icon: null },
     { key: "AC", label: "AC", icon: null },
     { key: "bathroom", label: "Bathroom", icon: null },
     { key: "kitchen", label: "Kitchen", icon: null },
@@ -33,80 +31,86 @@ const CamperDetails = ({ camper }) => {
     { label: "Consumption", value: camper.consumption },
   ];
 
+  const formatPrice = (price) => {
+    return `€${Number(price).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace('.', ',')}`;
+  };
+
   return (
     <div className={css.container}>
-      <div className={css.header}>
-        <h2 className={css.name}>{camper.name}</h2>
-        <div className={css.subHeader}>
+      {/* Top section: Images on left, info & vehicle details on right */}
+      <div className={css.topSection}>
+        {/* Left column: Gallery */}
+        <div className={css.galleryColumn}>
+          <div className={css.mainImageWrapper}>
+            <img src={activeImage} alt={camper.name} className={css.mainImage} />
+          </div>
+          <div className={css.thumbnails}>
+            {camper.gallery.map((image, index) => (
+              <img
+                key={index}
+                src={image.original}
+                alt={`${camper.name} thumbnail ${index + 1}`}
+                className={`${css.thumbnail} ${activeImage === image.original ? css.activeThumbnail : ""}`}
+                onClick={() => setActiveImage(image.original)}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Right column: Info & Specifications */}
+        <div className={css.infoColumn}>
+          <h2 className={css.name}>{camper.name}</h2>
+          <div className={css.meta}>
             <span className={css.rating}><FaStar color="#FFC531" /> {camper.rating} ({camper.reviews.length} Reviews)</span>
-            <span className={css.location}><FaMapMarkerAlt /> {camper.location}</span>
+            <span className={css.location}>
+              <img src={mapIcon} alt="Map" className={css.locationIcon} />
+              {camper.location}
+            </span>
+          </div>
+          <h3 className={css.price}>{formatPrice(camper.price)}</h3>
+          
+          <p className={css.description}>{camper.description}</p>
+          
+          <div className={css.vehicleDetails}>
+            <h3 className={css.sectionTitle}>Vehicle details</h3>
+            <ul className={css.amenities}>
+              {amenities.map(item => {
+                if (camper[item.key]) {
+                  const value = camper[item.key];
+                  return (
+                    <li key={item.key} className={css.amenity}>
+                      <span>
+                        {typeof value === 'boolean' 
+                          ? item.label 
+                          : value}
+                      </span>
+                    </li>
+                  )
+                }
+                return null;
+              })}
+            </ul>
+            
+            <ul className={css.specsTable}>
+              {vehicleDetails.map((detail, index) => (
+                <li key={index} className={css.specRow}>
+                  <span className={css.specLabel}>{detail.label}</span>
+                  <span className={css.specValue}>{detail.value}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <h3 className={css.price}>€{Number(camper.price).toFixed(2).replace('.', ',')}</h3>
       </div>
-      <div className={css.gallery}>
-        {camper.gallery.map((image, index) => (
-          <img
-            key={index}
-            src={image.original}
-            alt={`${camper.name} ${index + 1}`}
-            className={css.galleryImage}
-          />
-        ))}
-      </div>
-      <p className={css.description}>{camper.description}</p>
-      
-      <div className={css.tabs}>
-        <button
-          className={activeTab === "features" ? css.activeTab : ""}
-          onClick={() => setActiveTab("features")}
-        >
-          Features
-        </button>
-        <button
-          className={activeTab === "reviews" ? css.activeTab : ""}
-          onClick={() => setActiveTab("reviews")}
-        >
-          Reviews
-        </button>
-      </div>
-      
-      <div className={css.content}>
-        <div className={css.detailsPanel}>
-          {activeTab === "features" && (
-            <div className={css.featuresTab}>
-               <div className={css.amenities}>
-                  {amenities.map(item => {
-                      if (camper[item.key]) {
-                          return (
-                              <div key={item.key} className={css.amenity}>
-                                  {/* Icon would go here */}
-                                  <span>{item.label || camper[item.key]}</span> 
-                                  {/* For transmission/engine value is string, for AC/kitchen it's boolean so use label */}
-                                  {/* Actually logic: if boolean true, show label. If string, show string value. 
-                                      Special case: adults is number -> '3 adults' */}
-                                  {typeof camper[item.key] === 'boolean' ? '' : (item.key === 'adults' ? ' adults' : '')}
-                              </div>
-                          )
-                      }
-                      return null;
-                  })}
-               </div>
-               
-               <h3 className={css.detailsTitle}>Vehicle details</h3>
-               <ul className={css.detailsList}>
-                 {vehicleDetails.map((detail, index) => (
-                   <li key={index} className={css.detailItem}>
-                     <span>{detail.label}</span>
-                     <span>{detail.value}</span>
-                   </li>
-                 ))}
-               </ul>
-            </div>
-          )}
-          {activeTab === "reviews" && <Reviews reviews={camper.reviews} />}
+
+      {/* Bottom section: Reviews on left, Booking Form on right */}
+      <div className={css.bottomSection}>
+        <div className={css.reviewsColumn}>
+          <h3 className={css.sectionTitle}>Reviews</h3>
+          <Reviews reviews={camper.reviews} />
         </div>
-        <div className={css.bookingFormWrapper}>
-            <BookingForm />
+        <div className={css.bookingColumn}>
+          <BookingForm />
         </div>
       </div>
     </div>

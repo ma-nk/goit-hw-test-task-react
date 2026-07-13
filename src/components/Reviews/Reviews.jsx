@@ -14,9 +14,9 @@ const Reviews = ({ reviews }) => {
   };
 
   return (
-    <div className={css.reviewsContainer}>
+    <ul className={css.reviewsList}>
       {reviews.map((review, index) => (
-        <div key={index} className={css.review}>
+        <li key={index} className={css.review}>
           <div className={css.reviewer}>
             <div className={css.avatar}>
               {review.reviewer_name.charAt(0)}
@@ -29,9 +29,9 @@ const Reviews = ({ reviews }) => {
             </div>
           </div>
           <p className={css.comment}>{review.comment}</p>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

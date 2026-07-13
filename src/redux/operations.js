@@ -11,14 +11,11 @@ const buildParams = (filters) => {
   if (filters.form) {
     params.form = filters.form;
   }
-  if (filters.equipment && filters.equipment.length > 0) {
-    filters.equipment.forEach((item) => {
-      if (item === "automatic") {
-        params.transmission = "automatic";
-      } else {
-        params[item] = true;
-      }
-    });
+  if (filters.engine) {
+    params.engine = filters.engine;
+  }
+  if (filters.transmission) {
+    params.transmission = filters.transmission;
   }
   // Add pagination params
   if (filters.page) {
@@ -41,10 +38,15 @@ export const fetchCampers = createAsyncThunk(
       const response = await axios.get("/campers", {
         params: apiParams,
       });
-      // Return the full data object or normalize if needed
-      // API returns { items: [...], total: ... } when paginated
-      // Or just array if not? Based on curl check: {"total":..., "items":[...]}
-      return response.data;
+
+      // The API response is in the format: { total: number, items: Camper[] }
+      const items = response.data.items || [];
+      const total = response.data.total || items.length;
+
+      return {
+        items,
+        total,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,46 +1,94 @@
 .formContainer {
   padding: 44px;
-  border: 1px solid rgba(16, 24, 40, 0.2);
+  border: 1px solid rgba(16, 24, 40, 0.1);
   border-radius: 10px;
-  flex: 1;
+  background-color: white;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+}
+
+.formSubtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0 0 40px 0;
 }
 
 .formGroup {
   margin-bottom: 24px;
 }
 
-.input,
-.textarea {
+.inputWrapper {
+  position: relative;
   width: 100%;
-  padding: 18px;
-  background-color: #F7F7F7;
-  border: none;
-  border-radius: 10px;
+}
+
+.label {
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background-color: white;
+  padding: 0 4px;
+  z-index: 1;
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.input {
+  width: 100%;
+  padding: 18px 16px;
+  background-color: transparent;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 12px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  line-height: 1.25;
+  line-height: 1.5;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
 }
 
-.input::placeholder,
-.textarea::placeholder {
-  color: rgba(16, 24, 40, 0.6);
+.input:focus {
+  border-color: var(--primary);
 }
 
-.textarea {
-  height: 114px;
-  resize: none;
+.hasError .input {
+  border-color: #E44848;
+  background-color: rgba(228, 72, 72, 0.05);
 }
 
-.error {
+.hasError .label {
+  color: #E44848;
+}
+
+.errorIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #E44848;
+  pointer-events: none;
+  font-size: 18px;
+}
+
+.errorText {
   color: #E44848;
   font-size: 12px;
-  margin-top: 5px;
+  margin-top: 8px;
+  text-align: left;
 }
 
 .submitButton {
-  width: 160px;
-  padding: 16px 60px;
-  background-color: #E44848;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 200px;
@@ -54,5 +102,5 @@
 }
 
 .submitButton:hover {
-  background-color: #D84343;
+  background-color: var(--primary-hover);
 }

@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  overflow: hidden;
 }
 
 .header {
@@ -33,9 +34,12 @@
 .name {
   font-size: 24px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.33;
   color: #101828;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .priceWrapper {
@@ -47,17 +51,8 @@
 .price {
   font-size: 24px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.33;
   color: #101828;
-}
-
-.favButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
 }
 
 .subHeader {
@@ -76,21 +71,14 @@
   color: #101828;
 }
 
-.rating {
-  text-decoration: underline;
-}
-
 .description {
   font-size: 16px;
   line-height: 1.5;
   color: #475467;
   margin-bottom: 24px;
-  white-space: normal;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 .features {
@@ -98,6 +86,8 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 24px;
+  list-style: none;
+  padding: 0;
 }
 
 .featureTag {
@@ -111,12 +101,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  mix-blend-mode: multiply;
 }
 
 .showMoreButton {
   display: inline-block;
   padding: 16px 40px;
-  background-color: #E44848;
+  background-color: var(--primary);
   color: white;
   border-radius: 200px;
   text-decoration: none;
@@ -129,5 +120,23 @@
 }
 
 .showMoreButton:hover {
-  background-color: #D84343;
+  background-color: var(--primary-hover);
+}
+
+.heartActive {
+  fill: var(--primary);
+}
+
+.heartInactive {
+  fill: #101828;
+}
+
+.locationIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.featureIcon {
+  width: 20px;
+  height: 20px;
 }

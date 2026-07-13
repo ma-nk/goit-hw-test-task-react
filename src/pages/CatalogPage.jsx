@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../redux/operations";
 import { selectCampers } from "../redux/selectors";
@@ -7,6 +7,7 @@ import { clearFilters } from "../redux/filters/filtersSlice";
 import CamperList from "../components/CamperList/CamperList";
 import Filter from "../components/Filter/Filter";
 import Loader from "../components/Loader/Loader";
+import EmptyState from "../components/EmptyState/EmptyState";
 import css from "./CatalogPage.module.css";
 
 const CatalogPage = () => {
@@ -16,6 +17,7 @@ const CatalogPage = () => {
   const total = useSelector((state) => state.campers.total);
   const [page, setPage] = useState(1);
   const [filters, setFilters] = useState({});
+  const filterRef = useRef(null);
 
   useEffect(() => {
     dispatch(clearFilters());
@@ -35,18 +37,26 @@ const CatalogPage = () => {
     dispatch(fetchCampers({ ...filters, page: nextPage, limit: 4 }));
   };
 
+  const handleClearFilters = () => {
+    dispatch(clearFilters());
+    setPage(1);
+    setFilters({});
+    filterRef.current?.resetForm();
+    dispatch(fetchCampers({ page: 1, limit: 4 }));
+  };
+
   const showLoadMore = campers.length < total && !isLoading;
 
   return (
     <div className={css.container}>
-      <Filter onSearch={handleSearch} />
+      <Filter onSearch={handleSearch} innerRef={filterRef} />
       {/* Remove Loader here if you want it only for initial load or handle it differently */}
       {/* Usually Loader is shown over the list or as a spinner at bottom */}
       <div className={css.listContainer}>
           {campers.length > 0 ? (
             <CamperList campers={campers} />
           ) : (
-            !isLoading && <p>No campers found.</p>
+            !isLoading && <EmptyState onClear={handleClearFilters} />
           )}
           {isLoading && <Loader />}
           {showLoadMore && (

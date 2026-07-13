@@ -2,6 +2,14 @@
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary: #829B91;
+  --primary-hover: #6D7B75;
+  --bg-light: #F7F7F7;
+  --bg-badge: #F2F4F7;
+  --border: #DADDE1;
+  --text-dark: #101828;
+  --text-muted: #475467;
+  --star: #FFC531;
 }
 
 html {

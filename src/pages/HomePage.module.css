@@ -33,7 +33,7 @@
 .ctaButton {
   display: inline-block;
   padding: 16px 40px;
-  background-color: #E44848;
+  background-color: var(--primary);
   color: white;
   text-decoration: none;
   border-radius: 200px;
@@ -45,5 +45,5 @@
 }
 
 .ctaButton:hover {
-  background-color: #D84343;
+  background-color: var(--primary-hover);
 }

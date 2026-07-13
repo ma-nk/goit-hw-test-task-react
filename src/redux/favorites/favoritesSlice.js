@@ -9,9 +9,9 @@ const favoritesSlice = createSlice({
   reducers: {
     toggleFavorite(state, action) {
       const camper = action.payload;
-      const isFavorite = state.items.find((item) => item.id === camper.id);
+      const isFavorite = state.items.find((item) => String(item.id) === String(camper.id));
       if (isFavorite) {
-        state.items = state.items.filter((item) => item.id !== camper.id);
+        state.items = state.items.filter((item) => String(item.id) !== String(camper.id));
       } else {
         state.items.push(camper);
       }
